@@ -1,0 +1,64 @@
+{
+    "name": "tibetan-calendar-temporal",
+    "description": "An implementation of the Tibetan Lunar calendar to be used with Temporal. It is based on Svante Janson's paper www2.math.uu.se/~svante/papers/calendars/tibet.pdf",
+    "version": "0.0.1",
+    "author": "eszthoff",
+    "license": "MIT",
+    "main": "dist/index.js",
+    "module": "dist/index.es.js",
+    "browser": "dist/index.umd.js",
+    "scripts": {
+        "lint": "eslint . --fix",
+        "test": "jest --coverage",
+        "build": "rollup -c"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@types/jest": "^24.0.22",
+        "@types/node": "^12.12.7",
+        "@types/react": "^16.9.11",
+        "@typescript-eslint/eslint-plugin": "^2.7.0",
+        "@typescript-eslint/parser": "^2.7.0",
+        "eslint": "^6.6.0",
+        "eslint-config-airbnb-base": "^13.0.0",
+        "eslint-plugin-import": "^2.13.0",
+        "jest": "^24.9.0",
+        "mockdate": "^2.0.2",
+        "rollup": "^1.27.0",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-typescript2": "^0.25.2",
+        "ts-jest": "^24.1.0",
+        "typescript": "^3.7.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/eszthoff/tibetan-calendar-temporal.git"
+    },
+    "keywords": [
+        "tibetan",
+        "calendar",
+        "lunar",
+        "lunar-calendar",
+        "dates",
+        "date converter",
+        "javascript",
+        "temporal"
+    ],
+    "bugs": {
+        "url": "https://github.com/eszthoff/tibetan-calendar-temporal/issues"
+    },
+    "homepage": "https://github.com/eszthoff/tibetan-calendar-temporal",
+    "jest": {
+        "transform": {
+            "^.+\\.ts$": "ts-jest"
+        },
+        "collectCoverageFrom": [
+            "src/**/*.{js,jsx,ts,tsx}"
+        ],
+        "moduleDirectories": [
+            "node_modules",
+            "src"
+        ]
+    }
+}

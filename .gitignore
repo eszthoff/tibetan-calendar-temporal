@@ -1,0 +1,9 @@
+node_modules/
+coverage/
+
+// IDE specific
+.idea
+.vscode
+
+// OS
+**/.DS_Store

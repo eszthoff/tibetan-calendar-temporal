@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TibetanDate should create a correct class when invoked with object arg 1`] = `
+TibetanDate {
+  "date": 10,
+  "isDoubledDay": false,
+  "isLeapDay": false,
+  "isPreviousSkipped": false,
+  "isSkippedDay": false,
+  "month": 3,
+  "monthObj": TibetanMonth {
+    "days": Array [],
+    "endDateStr": "2019-06-03",
+    "isDoubledMonth": false,
+    "isLeapMonth": false,
+    "month": 3,
+    "startDateStr": "2019-05-05",
+    "year": 2146,
+  },
+  "westernDate": 2019-05-14T10:00:00.000Z,
+  "year": 2146,
+}
+`;
+
+exports[`TibetanDate should create a correct class when invoked with string arg 1`] = `
+TibetanDate {
+  "date": 20,
+  "isDoubledDay": false,
+  "isLeapDay": false,
+  "isPreviousSkipped": false,
+  "isSkippedDay": false,
+  "month": 4,
+  "monthObj": TibetanMonth {
+    "days": Array [],
+    "endDateStr": "2019-07-02",
+    "isDoubledMonth": false,
+    "isLeapMonth": false,
+    "month": 4,
+    "startDateStr": "2019-06-04",
+    "year": 2146,
+  },
+  "westernDate": 2019-06-22T10:00:00.000Z,
+  "year": 2146,
+}
+`;
+
+exports[`TibetanDate should create a correct class when invoked without arg 1`] = `
+TibetanDate {
+  "date": 4,
+  "isDoubledDay": false,
+  "isLeapDay": false,
+  "isPreviousSkipped": false,
+  "isSkippedDay": false,
+  "month": 4,
+  "monthObj": TibetanMonth {
+    "days": Array [],
+    "endDateStr": "2019-07-02",
+    "isDoubledMonth": false,
+    "isLeapMonth": false,
+    "month": 4,
+    "startDateStr": "2019-06-04",
+    "year": 2146,
+  },
+  "westernDate": 2019-06-07T10:00:00.000Z,
+  "year": 2146,
+}
+`;
+
+exports[`TibetanDate should return year object correctly 1`] = `
+TibetanYear {
+  "animal": "Pig",
+  "element": "Earth",
+  "gender": "Female",
+  "months": Array [],
+  "rabjungCycle": 17,
+  "rabjungYear": 33,
+  "tibYearNum": 2146,
+  "westernYear": 2019,
+}
+`;

@@ -1,0 +1,4 @@
+/node-modules
+/coverage
+/dist
+/**/*.d.ts
