@@ -1,7 +1,11 @@
-import { unixFromJulian, monthCountFromTibetan, trueDateFromMonthCountDay as getTrueDate } from '../conversions';
-import { isDoubledMonth, getDateStr } from '../helpers';
+import {
+    unixFromJulian,
+    monthCountFromTibetan,
+    trueDateFromMonthCountDay as getTrueDate,
+} from '../conversions';
+import { isDoubledMonth, getDateStr, getMonthCodeFromLegacy } from '../helpers';
 import { Month } from '../types';
-
+import { MonthStr, MonthCode, MonthNum } from '../types/dateDescriptions';
 
 /**
  * Calculates full information about a Tibetan month: whether it is doubled or not,
@@ -15,20 +19,40 @@ import { Month } from '../types';
  * @param {boolean} [arg.isLeapMonth=false] - if leap month or not
  * @returns {Month}
  */
-const getMonthFromTibetan = ({ year, month, isLeapMonth = false }: { year: number; month: number; isLeapMonth?: boolean }): Month => {
-  const hasLeap = isDoubledMonth(year, month);
-  const isLeap = isLeapMonth && hasLeap;
+const getMonthFromTibetan = ({
+    year,
+    month,
+    isLeapMonth = false,
+}: {
+    year: number;
+    month: number;
+    isLeapMonth?: boolean;
+}): Month => {
+    const hasLeap = isDoubledMonth(year, month);
+    const isLeap = isLeapMonth && hasLeap;
 
-  // calculate the Julian date 1st and last of the month
-  const monthCount = monthCountFromTibetan({ year, month, isLeapMonth: isLeap });
-  const jdFirst = 1 + Math.floor(getTrueDate(30, monthCount - 1));
-  const jdLast = Math.floor(getTrueDate(30, monthCount));
-  const startDate = getDateStr(unixFromJulian(jdFirst));
-  const endDate = getDateStr(unixFromJulian(jdLast));
+    // calculate the Julian date 1st and last of the month
+    const monthCount = monthCountFromTibetan({
+        year,
+        month,
+        isLeapMonth: isLeap,
+    });
+    const jdFirst = 1 + Math.floor(getTrueDate(30, monthCount - 1));
+    const jdLast = Math.floor(getTrueDate(30, monthCount));
+    const startDate = getDateStr(unixFromJulian(jdFirst));
+    const endDate = getDateStr(unixFromJulian(jdLast));
 
-  return {
-    year, month, isLeapMonth: isLeap, isDoubledMonth: hasLeap, startDate, endDate,
-  };
+    let monthCode = getMonthCodeFromLegacy(month as MonthNum, hasLeap, isLeap);
+
+    return {
+        year,
+        month,
+        isLeapMonth: isLeap,
+        isDoubledMonth: hasLeap,
+        monthCode,
+        startDate,
+        endDate,
+    };
 };
 
 export default getMonthFromTibetan;

@@ -6,16 +6,23 @@ import meanDate from './mean-date';
 import moon from './moon';
 import sun from './sun';
 import yearAttributes from './year-attributes';
-
+import {
+    getMonthCode,
+    getMonthCodeFromLegacy,
+    getLegacyFromMonthCode,
+} from './get-month-code';
 
 export {
-  yearAttributes,
-  getDateStr,
-  getDayBefore,
-  isDoubledMonth,
-  meanDate,
-  moon,
-  sun,
-  frac,
-  amod,
+    yearAttributes,
+    getDateStr,
+    getDayBefore,
+    isDoubledMonth,
+    meanDate,
+    moon,
+    sun,
+    frac,
+    amod,
+    getMonthCode,
+    getMonthCodeFromLegacy,
+    getLegacyFromMonthCode,
 };

@@ -9,10 +9,12 @@
     "browser": "dist/index.umd.js",
     "scripts": {
         "lint": "eslint . --fix",
-        "test": "jest --coverage",
+        "test": "jest",
         "build": "rollup -c"
     },
-    "dependencies": {},
+    "dependencies": {
+        "proposal-temporal": "^0.8.0"
+    },
     "devDependencies": {
         "@types/jest": "^24.0.22",
         "@types/node": "^12.12.7",

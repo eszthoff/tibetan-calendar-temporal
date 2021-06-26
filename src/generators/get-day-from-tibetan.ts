@@ -4,8 +4,14 @@ import {
     trueDateFromMonthCountDay,
     unixFromJulian,
 } from '../conversions';
-import { getDayBefore, isDoubledMonth, getDateStr } from '../helpers';
+import {
+    getDayBefore,
+    isDoubledMonth,
+    getDateStr,
+    getLegacyFromMonthCode,
+} from '../helpers';
 import { Day } from '../types';
+import { MonthCode } from '../types/dateDescriptions';
 
 /**
  * Calculates full information for a given Tibetan date
@@ -24,21 +30,19 @@ import { Day } from '../types';
  */
 const getDayFromTibetan = ({
     year,
-    month,
-    isLeapMonth = false,
+    monthCode,
     day,
     isLeapDay = false,
 }: {
     year: number;
-    month: number;
-    isLeapMonth?: boolean;
+    monthCode: MonthCode;
     day: number;
     isLeapDay?: boolean;
 }): Day => {
-    let julianDate = julianFromTibetan(year, month, isLeapMonth, day);
+    let julianDate = julianFromTibetan(year, monthCode, day);
 
     // also calculate the Julian date of the previous Tib. day
-    const monthCount = monthCountFromTibetan({ year, month, isLeapMonth });
+    const monthCount = monthCountFromTibetan({ year, monthCode });
     const dayBefore = getDayBefore(day, monthCount);
     const julianDatePrevious = Math.floor(
         trueDateFromMonthCountDay(dayBefore.day, dayBefore.monthCount)
@@ -49,6 +53,8 @@ const getDayFromTibetan = ({
     );
 
     // figure out leap months, leap days & skipped days
+    const { month, isLeapMonth } = getLegacyFromMonthCode(monthCode);
+    // const monthNum = month ||
     const isDoubledMonthThis = isDoubledMonth(year, month);
     const hasLeapDayThis = julianDate === julianDatePrevious + 2;
     const skippedDay = julianDate === julianDatePrevious;
@@ -65,6 +71,7 @@ const getDayFromTibetan = ({
         year,
         month: {
             month,
+            monthCode,
             isLeapMonth: isLeapMonth && isDoubledMonthThis,
             isDoubledMonth: isDoubledMonthThis,
         },
